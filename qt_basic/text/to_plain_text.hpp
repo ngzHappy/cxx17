@@ -8,6 +8,8 @@
 namespace text {
 
 class ToPlainTextAns {
+    CPLUSPLUS_OBJECT(ToPlainTextAns)
+private:
     union __Data {
         QByteArray new_data;
         struct {
