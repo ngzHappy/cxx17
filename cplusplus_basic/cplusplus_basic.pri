@@ -1,3 +1,3 @@
 INCLUDEPATH+=$$PWD
 
-#include($$PWD/tcmalloc/tcmalloc.pri)
+include($$PWD/tcmalloc/tcmalloc.pri)

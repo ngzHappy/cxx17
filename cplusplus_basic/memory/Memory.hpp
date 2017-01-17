@@ -47,11 +47,11 @@ protected:
 }/*namespace memory*/
 
 /*****************************************/
-#include "private/Allocator.hpp"
-#include "private/MakeShared.hpp"
-#include "private/MakeFunction.hpp"
-#include "private/MemoryStatic.hpp"
-#include "private/MemoryApplication.hpp"
+#include "private/_Allocator.hpp"
+#include "private/_MakeShared.hpp"
+#include "private/_MakeFunction.hpp"
+#include "private/_MemoryStatic.hpp"
+#include "private/_MemoryApplication.hpp"
 #include "StackPointer.hpp"
 /*****************************************/
 

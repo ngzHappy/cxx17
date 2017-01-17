@@ -1,6 +1,6 @@
 ﻿#include "../Memory.hpp"
 #include "../../thread/ShadowThread.hpp"
-#include "MemoryApplication.hpp"
+#include "_MemoryApplication.hpp"
 #include <atomic>
 
 namespace memory {

@@ -3,8 +3,8 @@
 
 #include <cassert>
 #include "../Memory.hpp"
-#include "Allocator.hpp"
-#include "MemoryApplication.hpp"
+#include "_Allocator.hpp"
+#include "_MemoryApplication.hpp"
 #include <type_traits>
 
 namespace memory {
