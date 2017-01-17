@@ -1,7 +1,22 @@
 ﻿#include <stdlib.h>
 #include <boost/config.hpp>
 
-#ifdef HAS_TCMALLOC_CONCEPT
+#if defined(HAS_JEMALLOC_CONCEPT)
+
+BOOST_SYMBOL_IMPORT void * je_malloc(size_t size);
+BOOST_SYMBOL_IMPORT void   je_free(void* ptr);
+BOOST_SYMBOL_IMPORT void * je_realloc(void* ptr, size_t size);
+BOOST_SYMBOL_IMPORT void * je_calloc(size_t nmemb, size_t size);
+BOOST_SYMBOL_IMPORT size_t je_malloc_usable_size(void* ptr);
+
+#define std_malloc        je_malloc
+#define std_calloc        je_calloc
+#define std_realloc       je_realloc
+#define std_free          je_free
+#define std_out_of_memory exit
+#define std_size          je_malloc_usable_size
+
+#elif defined(HAS_TCMALLOC_CONCEPT)
 
 BOOST_SYMBOL_IMPORT void * tc_malloc(size_t size);
 BOOST_SYMBOL_IMPORT void   tc_free(void* ptr);
