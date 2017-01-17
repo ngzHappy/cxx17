@@ -28,7 +28,10 @@ static void operator delete(void *arg) { memory::free(arg); } \
 static void operator delete[](void *arg) { memory::free(arg); } \
 static void * operator new(std::size_t n) { return memory::malloc(n); } \
 static void * operator new[](std::size_t n) { return memory::malloc(n); } \
-static void * operator new(std::size_t,void * arg) { return arg; }
+static void * operator new(std::size_t,void * arg) { return arg; } \
+static void * operator new[](std::size_t,void * arg) { return arg; } \
+static void operator delete[](void *,void *){} \
+static void operator delete(void *,void *){}
 #else
 #define MEMORY_CLASS_NEW_DELETE
 #endif/*MEMORY_CLASS_NEW_DELETE*/
