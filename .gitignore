@@ -1,0 +1,6 @@
+*.user
+*.autosave
+binlib/
+visual_studio_build/
+*.ls9784
+*.WE6252
