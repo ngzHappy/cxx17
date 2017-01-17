@@ -27,7 +27,7 @@ BOOST_SYMBOL_EXPORT void * auto_malloc(size_t arg){
 
 BOOST_SYMBOL_EXPORT void * auto_realloc(void* argO,size_t argOSize,size_t argNSize){
     if(argO==&null_data){
-        return std_malloc(argNSize);
+        return auto_malloc(argNSize);
     }
     void * ans = std_realloc(argO,argNSize);
     if(ans==0){
