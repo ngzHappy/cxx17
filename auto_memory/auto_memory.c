@@ -10,7 +10,7 @@
 
 /****************************************************************/
 
-static int null_data[4] ;
+static struct { int _unamed_[4]; } null_data;
 
 BOOST_SYMBOL_EXPORT void auto_out_of_memory(){
     std_out_of_memory(-7777);
@@ -53,6 +53,10 @@ BOOST_SYMBOL_EXPORT void auto_free(void* arg){
         return ;
     }
     return std_free(arg);
+}
+
+BOOST_SYMBOL_EXPORT void auto_memory_gc(){
+
 }
 
 /****************************************************************/
