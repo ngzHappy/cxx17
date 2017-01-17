@@ -12,6 +12,7 @@ BOOST_SYMBOL_IMPORT void * auto_malloc(size_t);
 BOOST_SYMBOL_IMPORT void * auto_realloc(void*,size_t,size_t);
 BOOST_SYMBOL_IMPORT void * auto_calloc(size_t,size_t);
 BOOST_SYMBOL_IMPORT void auto_free(void *);
+BOOST_SYMBOL_IMPORT size_t auto_size(void *);
 BOOST_SYMBOL_IMPORT void auto_out_of_memory()/*no return*/;
 BOOST_SYMBOL_IMPORT void auto_memory_gc()/*启动一次gc*/;
 

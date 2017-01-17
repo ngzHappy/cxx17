@@ -6,6 +6,7 @@
 
 namespace memory {
 
+inline size_t size(void * arg){ return auto_size(arg); }
 inline void out_of_memory() { auto_out_of_memory(); }
 inline void * malloc(size_t arg) { return auto_malloc(arg); }
 inline void free(void * arg) { return auto_free(arg); }
@@ -15,6 +16,7 @@ inline void free(const void *arg) { memory::free(const_cast<void*>(arg)); }
 _CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void clean();
 _CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void quick_exit(int=-2);
 inline void freePoolMemory() { memory::clean(); }
+inline size_t size(const void * arg){ return auto_size(const_cast<void*>(arg)); }
 
 }/*memory*/
 

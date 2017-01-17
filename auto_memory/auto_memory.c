@@ -7,6 +7,12 @@
 #define std_realloc       realloc
 #define std_free          free
 #define std_out_of_memory exit
+#if defined(WIN32)||defined(_WIN32)
+#define std_size          _msize
+#else
+#define std_size          malloc_usable_size
+#endif
+
 
 /****************************************************************/
 
@@ -53,6 +59,13 @@ BOOST_SYMBOL_EXPORT void auto_free(void* arg) {
         return;
     }
     std_free(arg);
+}
+
+BOOST_SYMBOL_EXPORT size_t auto_size(void *arg){
+    if (arg==&null_data) {
+        return 0;
+    }
+    return (size_t)(std_size(arg));
 }
 
 BOOST_SYMBOL_EXPORT void auto_memory_gc() {
