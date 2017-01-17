@@ -25,6 +25,7 @@ namespace Botan {
 * Represents a DLL or shared object
 */
 class Dynamically_Loaded_Library {
+    CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * Load a DLL (or fail with an exception)
@@ -82,6 +83,7 @@ namespace Botan {
 * Win32 Entropy Source
 */
 class Win32_EntropySource : public EntropySource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string name() const { return "Win32 Statistics"; }
     void poll(Entropy_Accumulator& accum);
@@ -97,6 +99,7 @@ namespace Botan {
 * Often still faster than iterative on superscalar machines
 */
 class SIMD_Scalar {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     static bool enabled() { return true; }
 
@@ -340,6 +343,7 @@ namespace Botan {
 * Mutex Base Class
 */
 class Mutex {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * Lock the mutex
@@ -357,6 +361,7 @@ public:
 * Mutex Factory
 */
 class Mutex_Factory {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * @return newly allocated mutex
@@ -370,6 +375,7 @@ public:
 * Mutex Holding Class for RAII
 */
 class Mutex_Holder {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * Hold onto a mutex until we leave scope
@@ -431,6 +437,7 @@ inline V search_map(const containers::map<K,V>& mapping,
 */
 template<class T>
 class del_fun : public std::unary_function<T,void> {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     void operator()(T* ptr) { delete ptr; }
 };
@@ -473,6 +480,7 @@ size_t static_provider_weight(const containers::string& prov_name);
 */
 template<typename T>
 class Algorithm_Cache {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * @param algo_spec names the requested algorithm
@@ -713,6 +721,7 @@ namespace Botan {
 * Engine for implementations that use some kind of SIMD
 */
 class SIMD_Engine : public Engine {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string provider_name() const { return "simd"; }
 
@@ -732,6 +741,7 @@ namespace Botan {
 * File Tree Walking Entropy Source
 */
 class FTW_EntropySource : public EntropySource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string name() const { return "Proc Walker"; }
 
@@ -756,6 +766,7 @@ namespace Botan {
 * to the poll, as a local attacker could observe them directly.
 */
 class High_Resolution_Timestamp : public EntropySource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string name() const { return "High Resolution Timestamp"; }
     void poll(Entropy_Accumulator& accum);
@@ -770,6 +781,7 @@ namespace Botan {
 * Win32 Mutex Factory
 */
 class Win32_Mutex_Factory : public Mutex_Factory {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     Mutex* make();
 };
@@ -880,6 +892,7 @@ namespace Botan {
 * No-Op Mutex Factory
 */
 class Noop_Mutex_Factory : public Mutex_Factory {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     Mutex* make();
 };
@@ -893,6 +906,7 @@ namespace Botan {
 * Pooling Allocator
 */
 class Pooling_Allocator : public Allocator {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     void* allocate(size_t);
     void deallocate(void*,size_t);
@@ -912,6 +926,7 @@ private:
     virtual void dealloc_block(void*,size_t)=0;
 
     class Memory_Block {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         Memory_Block(void*);
 
@@ -951,6 +966,7 @@ namespace Botan {
 * Allocator using malloc
 */
 class Malloc_Allocator : public Allocator {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     void* allocate(size_t);
     void deallocate(void*,size_t);
@@ -962,6 +978,7 @@ public:
 * Allocator using malloc plus locking
 */
 class Locking_Allocator : public Pooling_Allocator {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * @param mutex used for internal locking
@@ -983,6 +1000,7 @@ namespace Botan {
 * Fixed Window Exponentiator
 */
 class Fixed_Window_Exponentiator : public Modular_Exponentiator {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     void set_exponent(const BigInt&);
     void set_base(const BigInt&);
@@ -1003,6 +1021,7 @@ private:
 * Montgomery Exponentiator
 */
 class Montgomery_Exponentiator : public Modular_Exponentiator {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     void set_exponent(const BigInt&);
     void set_base(const BigInt&);
@@ -1084,6 +1103,7 @@ namespace Botan {
 * Unix Program Info
 */
 struct Unix_Program {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     /**
     * @param n is the name and arguments of what we are going run
     * @param p is the priority level (lower prio numbers get polled first)
@@ -1110,6 +1130,7 @@ struct Unix_Program {
 * Command Output DataSource
 */
 class DataSource_Command : public DataSource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     size_t read(byte[],size_t);
     size_t peek(byte[],size_t,size_t) const;
@@ -1143,6 +1164,7 @@ namespace Botan {
 * it is and can zap it later.
 */
 class MemoryMapping_Allocator : public Pooling_Allocator {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * @param mutex used for internal locking
@@ -1178,6 +1200,7 @@ namespace Botan {
 * Entropy source reading from kernel devices like /dev/random
 */
 class Device_EntropySource : public EntropySource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string name() const { return "RNG Device Reader"; }
 
@@ -1191,6 +1214,7 @@ private:
     A class handling reading from a Unix character device
     */
     class Device_Reader {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         typedef int fd_type;
 
@@ -1413,6 +1437,7 @@ namespace Botan {
 * Pthread Mutex Factory
 */
 class Pthread_Mutex_Factory : public Mutex_Factory {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     Mutex* make();
 };
@@ -1426,6 +1451,7 @@ namespace Botan {
 * Core Engine
 */
 class Core_Engine : public Engine {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string provider_name() const { return "core"; }
 
@@ -1485,6 +1511,7 @@ namespace Botan {
 * Unix Entropy Source
 */
 class Unix_EntropySource : public EntropySource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string name() const { return "Unix Entropy Source"; }
 
@@ -1508,6 +1535,7 @@ namespace Botan {
 * EGD Entropy Source
 */
 class EGD_EntropySource : public EntropySource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string name() const { return "EGD/PRNGD"; }
 
@@ -1517,6 +1545,7 @@ public:
     ~EGD_EntropySource();
 private:
     class EGD_Socket {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         EGD_Socket(const containers::string& path);
 
@@ -1553,6 +1582,7 @@ namespace Botan {
 * Container of output buffers for Pipe
 */
 class Output_Buffers {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     size_t read(byte[],size_t,Pipe::message_id);
     size_t peek(byte[],size_t,size_t,Pipe::message_id) const;
@@ -1640,6 +1670,7 @@ extern "C" {
 * Win32 CAPI Entropy Source
 */
 class Win32_CAPI_EntropySource : public EntropySource {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     containers::string name() const { return "Win32 CryptoGenRandom"; }
 
@@ -3110,6 +3141,7 @@ namespace {
 * MemoryMapping_Allocator Exception
 */
 class BOTAN_DLL MemoryMapping_Failed : public Exception {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     MemoryMapping_Failed(const containers::string& msg):
         Exception("MemoryMapping_Allocator: "+msg) {}
@@ -3122,6 +3154,7 @@ public:
 */
 void* MemoryMapping_Allocator::alloc_block(size_t n) {
     class TemporaryFile {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         int get_fd() const { return fd; }
 
@@ -7388,6 +7421,7 @@ void CAST_128::key_schedule(const byte key[],size_t length) {
 void CAST_128::cast_ks(MemoryRegion<u32bit>& K,
                        MemoryRegion<u32bit>& X) {
     class ByteReader {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         byte operator()(size_t i) { return (X[i/4]>>(8*(3-(i%4)))); }
         ByteReader(const u32bit* x): X(x) {}
@@ -15220,6 +15254,7 @@ void Extended_Key_Usage::contents_to(Data_Store& subject,Data_Store&) const {
 * A policy specifier
 */
 class Policy_Information : public ASN1_Object {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     OID oid;
 
@@ -15931,6 +15966,7 @@ containers::string X509_Certificate::to_string() const {
 */
 X509_DN create_dn(const Data_Store& info) {
     class DN_Matcher : public Data_Store::Matcher {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         bool operator()(const containers::string& key,const containers::string&) const {
             if (key.find("X520.")!=containers::string::npos)
@@ -15956,6 +15992,7 @@ X509_DN create_dn(const Data_Store& info) {
 */
 AlternativeName create_alt_name(const Data_Store& info) {
     class AltName_Matcher : public Data_Store::Matcher {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         bool operator()(const containers::string& key,const containers::string&) const {
             for (size_t i=0; i!=matches.size(); ++i)
@@ -18372,6 +18409,7 @@ size_t rounds(const BigInt& a,const BigInt& b) {
 * A simple round function based on HMAC(SHA-256)
 */
 class FPE_Encryptor {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     FPE_Encryptor(const SymmetricKey& key,
                   const BigInt& n,
@@ -20209,6 +20247,7 @@ namespace Botan {
 namespace {
 
 class CSP_Handle {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     CSP_Handle(u64bit capi_provider) {
         valid=false;
@@ -20668,6 +20707,7 @@ namespace Botan {
 * Returns file descriptors. Until it doesn't
 */
 class File_Descriptor_Source {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     /**
     * @return next file descriptor, or -1 if done
@@ -20680,6 +20720,7 @@ public:
 namespace {
 
 class Directory_Walker : public File_Descriptor_Source {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     Directory_Walker(const containers::string& root):
         m_cur_dir(std::make_pair<DIR*,containers::string>(0,"")) {
@@ -20960,6 +21001,8 @@ void do_exec(const containers::vector<containers::string>& arg_list,
 * Local information about the pipe
 */
 struct pipe_wrapper {
+    CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
+public:
     int fd;
     pid_t pid;
 
@@ -23878,6 +23921,7 @@ namespace {
 * A Filter that does nothing
 */
 class Null_Filter : public Filter {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     void write(const byte input[],size_t length) { send(input,length); }
 
@@ -24434,6 +24478,7 @@ namespace Botan {
 * A node in a SecureQueue
 */
 class SecureQueueNode {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     SecureQueueNode(): buffer(DEFAULT_BUFFERSIZE) { next=0; start=end=0; }
 
@@ -29081,6 +29126,7 @@ void add_entropy_sources(RandomNumberGenerator* rng) {
 }
 
 class Serialized_PRNG : public RandomNumberGenerator {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     void randomize(byte out[],size_t len) {
         Mutex_Holder lock(mutex);
@@ -34797,6 +34843,7 @@ bool generate_dsa_primes(RandomNumberGenerator& rng,
     const size_t HASH_SIZE=hash->output_length();
 
     class Seed {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         Seed(const MemoryRegion<byte>& s): seed(s) {}
 
@@ -35085,6 +35132,7 @@ namespace {
 * Miller-Rabin Primality Tester
 */
 class MillerRabin_Test {
+     CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
 public:
     bool is_witness(const BigInt& nonce);
     MillerRabin_Test(const BigInt& num);
@@ -35143,7 +35191,13 @@ MillerRabin_Test::MillerRabin_Test(const BigInt& num) {
 * Miller-Rabin Iterations
 */
 size_t miller_rabin_test_iterations(size_t bits,size_t level) {
-    struct mapping { size_t bits; size_t verify_iter; size_t check_iter; };
+    struct mapping {
+        CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
+    public:
+        size_t bits;
+        size_t verify_iter;
+        size_t check_iter;
+    };
 
     static const mapping tests[]={
        {   50, 55, 25 },
@@ -36502,8 +36556,10 @@ namespace Botan {
 */
 Mutex* Noop_Mutex_Factory::make() {
     class Noop_Mutex : public Mutex {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         class Mutex_State_Error : public Internal_Error {
+             CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
         public:
             Mutex_State_Error(const containers::string& where):
                 Internal_Error("Noop_Mutex::"+where+": "+
@@ -36551,6 +36607,7 @@ namespace Botan {
 */
 Mutex* Win32_Mutex_Factory::make() {
     class Win32_Mutex : public Mutex {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         void lock() { EnterCriticalSection(&mutex); }
         void unlock() { LeaveCriticalSection(&mutex); }
@@ -36590,6 +36647,7 @@ namespace Botan {
 Mutex* Pthread_Mutex_Factory::make() {
 
     class Pthread_Mutex : public Mutex {
+         CPLUSPLUS_OBJECT(cplusplus_unnamed_ojbect)
     public:
         void lock() {
             if (pthread_mutex_lock(&mutex)!=0)

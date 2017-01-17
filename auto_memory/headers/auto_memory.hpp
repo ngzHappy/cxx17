@@ -1,8 +1,26 @@
 ﻿#ifndef ____AUTO_MEMORY_HPP
 #define ____AUTO_MEMORY_HPP
 
+#include <stddef.h>
 #include <stdlib.h>
 #include <boost/config.hpp>
+
+struct cplusplus_unnamed_ojbect {};
+
+#ifndef CPLUSPLUS_OBJECT
+#ifdef __cplusplus
+#define CPLUSPLUS_OBJECT(x)private: \
+    static constexpr size_t __0x21_size() noexcept(true) {return sizeof(x);} \
+    public: \
+    static void * operator new(size_t n){return auto_malloc(n);} \
+    static void operator delete(void * a){return auto_free(a);} \
+    static void * operator new[](size_t n){return auto_malloc(n);} \
+    static void operator delete[](void * a){return auto_free(a);}
+
+#else/*__cplusplus*/
+#define CPLUSPLUS_OBJECT(x)
+#endif/*__cplusplus*/
+#endif/*CPLUSPLUS_OBJECT*/
 
 #ifdef __cplusplus
 extern "C"{
