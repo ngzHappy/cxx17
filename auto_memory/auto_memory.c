@@ -62,7 +62,7 @@ BOOST_SYMBOL_EXPORT void auto_free(void* arg) {
 }
 
 BOOST_SYMBOL_EXPORT size_t auto_size(void *arg){
-    if (arg==&null_data) {
+    if ((arg==&null_data)||(arg==0)) {
         return 0;
     }
     return (size_t)(std_size(arg));
