@@ -1,3 +1,3 @@
 INCLUDEPATH+=$$PWD
 
-include($$PWD/tcmalloc/tcmalloc.pri)
+include($$PWD/../auto_memory/auto_memory.pri)

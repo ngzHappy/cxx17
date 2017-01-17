@@ -1,6 +1,23 @@
 ﻿#include <stdlib.h>
 #include <boost/config.hpp>
 
+#ifdef HAS_TCMALLOC_CONCEPT
+
+BOOST_SYMBOL_IMPORT void * tc_malloc(size_t size);
+BOOST_SYMBOL_IMPORT void   tc_free(void* ptr);
+BOOST_SYMBOL_IMPORT void * tc_realloc(void* ptr, size_t size);
+BOOST_SYMBOL_IMPORT void * tc_calloc(size_t nmemb, size_t size);
+BOOST_SYMBOL_IMPORT size_t tc_malloc_size(void* ptr);
+
+#define std_malloc        tc_malloc
+#define std_calloc        tc_calloc
+#define std_realloc       tc_realloc
+#define std_free          tc_free
+#define std_out_of_memory exit
+#define std_size          tc_malloc_size
+
+#else
+
 /*change the functions to your define*/
 #define std_malloc        malloc
 #define std_calloc        calloc
@@ -13,6 +30,7 @@
 #define std_size          malloc_usable_size
 #endif
 
+#endif
 
 /****************************************************************/
 

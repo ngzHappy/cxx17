@@ -16,4 +16,4 @@ INCLUDEPATH+=$$PWD/headers
 include($$PWD/../this_project.pri)
 DESTDIR=$$THIS_PROJECT_DESTDIR
 
-
+include($$PWD/auto_memory.pri)
