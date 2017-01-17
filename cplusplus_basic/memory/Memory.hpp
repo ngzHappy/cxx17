@@ -1,21 +1,19 @@
 ﻿#ifndef _MEMORY_HPP_0x877160
 #define _MEMORY_HPP_0x877160
 
+#include <auto_memory.hpp>
 #include "../config/config.hpp"
 
 namespace memory {
 
-typedef void(*function_memory_not_enough)();
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT function_memory_not_enough get_memory_not_enough();
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT function_memory_not_enough set_memory_not_enough(function_memory_not_enough);
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void clean() noexcept(true);
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void * malloc(size_t arg) noexcept(true);
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void free(void * arg) noexcept(true);
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT size_t size(void * arg) noexcept(true);
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT int cookie_size() noexcept(true);
-_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void quick_exit(int=-2);
+inline void out_of_memory(){ auto_out_of_memory(); }
+inline void * malloc(size_t arg) { return auto_malloc(arg); }
+inline void free(void * arg) { return auto_free(arg); }
+inline void * realloc(void * o,size_t os,size_t ns){return auto_realloc(o,os,ns);}
+inline void * calloc(size_t n,size_t s){return auto_calloc(n,s);}
 inline void free(const void *arg) { memory::free(const_cast<void*>(arg)); }
-inline int size(const void *arg) { return memory::size(const_cast<void*>(arg)); }
+_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void clean();
+_CPLUSPLUS_BASIC_LIBRARYSHARED_EXPORT void quick_exit(int=-2);
 inline void freePoolMemory() { memory::clean(); }
 
 }/*memory*/

@@ -44,7 +44,8 @@ win32{
     DEFINES *= LOCAL_CODEC_OF_THE_PROJECT=\\\"UTF-8\\\"
 }
 
-HEADERS += $$PWD/auto_memory/headers
+INCLUDEPATH += $$PWD/auto_memory
+INCLUDEPATH += $$PWD/auto_memory/headers
 
 ###########################################
 #
