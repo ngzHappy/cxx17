@@ -25,7 +25,7 @@ PRECOMPILED_HEADER  += $$PWD/private/_msvc_core_utility_prebuild.hpp
 PRECOMPILED_HEADER  += $$PWD/private/_core_utility_prebuild.hpp
 }
 
-
+LIBS += -L$$THIS_PROJECT_DESTDIR -lauto_memory
 
 
 

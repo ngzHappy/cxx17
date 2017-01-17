@@ -1,5 +1,6 @@
 ﻿#include "../Memory.hpp"
 #include <atomic>
+#include <future>
 
 namespace {
 namespace __cpp {
