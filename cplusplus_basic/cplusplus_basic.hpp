@@ -15,6 +15,10 @@
 #define DECLTYPE(_v__) std::remove_cv_t<std::remove_reference_t<decltype(_v__)>>
 #endif // !DECLTYPE
 
+#ifndef PLACEMENT_NEW
+#define PLACEMENT_NEW(_x_) ::new(_x_)
+#endif
+
 #include <utility>
 #include <numeric>
 #include <algorithm>

@@ -16,7 +16,7 @@ struct cplusplus_unnamed_ojbect {};
     static void operator delete(void * a){return auto_free(a);} \
     static void * operator new[](size_t n){return auto_malloc(n);} \
     static void operator delete[](void * a){return auto_free(a);}
-
+    static void * operator new(std::size_t,void * arg) { return arg; }
 #else/*__cplusplus*/
 #define CPLUSPLUS_OBJECT(x)
 #endif/*__cplusplus*/
