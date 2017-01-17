@@ -26,8 +26,8 @@ inline size_t size(const void * arg){ return auto_size(const_cast<void*>(arg)); 
 #define MEMORY_CLASS_NEW_DELETE public: \
 static void operator delete(void *arg) { memory::free(arg); } \
 static void operator delete[](void *arg) { memory::free(arg); } \
-static void * operator new(std::size_t n) { auto ans=memory::malloc(static_cast<int>(n)); if (ans) { return ans; }throw std::bad_alloc{}; } \
-static void * operator new[](std::size_t n) { auto ans=memory::malloc(static_cast<int>(n)); if (ans) { return ans; }throw std::bad_alloc{}; }
+static void * operator new(std::size_t n) { return memory::malloc(n); } \
+static void * operator new[](std::size_t n) { return memory::malloc(n); }
 #else
 #define MEMORY_CLASS_NEW_DELETE
 #endif/*MEMORY_CLASS_NEW_DELETE*/
